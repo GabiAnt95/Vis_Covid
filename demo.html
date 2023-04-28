@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>pydeck</title>
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <script src='https://cdn.jsdelivr.net/npm/@deck.gl/jupyter-widget@~8.8.*/dist/index.js'></script>
+    <style>
+    body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#deck-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+#deck-container canvas {
+  z-index: 1;
+  background: none;
+}
+    </style>
+  </head>
+  <body>
+    <div id="deck-container">
+    </div>
+  </body>
+  <script>
+    const container = document.getElementById('deck-container');
+    const jsonInput = {
+  "initialViewState": {
+    "latitude": 39.85315581131372,
+    "longitude": -3.8938955577843135,
+    "pitch": 45,
+    "zoom": 5
+  },
+  "layers": [
+    {
+      "@@type": "HexagonLayer",
+      "coverage": 1,
+      "data": [
+        {
+          "latitude": 43.37012643,
+          "longitude": -8.39114853,
+          "n_cases": 240844,
+          "n_death": 1378,
+          "n_hosp": 9651,
+          "n_uci": 1428,
+          "provincia": "A Coru\u00f1a"
+        },
+        {
+          "latitude": 38.34548705,
+          "longitude": -0.4831832,
+          "n_cases": 467693,
+          "n_death": 3464,
+          "n_hosp": 18906,
+          "n_uci": 1769,
+          "provincia": "Alacant"
+        },
+        {
+          "latitude": 38.99588053,
+          "longitude": -1.85574745,
+          "n_cases": 88472,
+          "n_death": 984,
+          "n_hosp": 5210,
+          "n_uci": 640,
+          "provincia": "Albacete"
+        },
+        {
+          "latitude": 36.83892362,
+          "longitude": -2.46413188,
+          "n_cases": 136440,
+          "n_death": 1149,
+          "n_hosp": 5556,
+          "n_uci": 860,
+          "provincia": "Almer\u00eda"
+        },
+        {
+          "latitude": 43.36232165,
+          "longitude": -5.84372206,
+          "n_cases": 206534,
+          "n_death": 2603,
+          "n_hosp": 12391,
+          "n_uci": 1024,
+          "provincia": "Asturias"
+        },
+        {
+          "latitude": 38.87874339,
+          "longitude": -6.97099704,
+          "n_cases": 164384,
+          "n_death": 1189,
+          "n_hosp": 5074,
+          "n_uci": 420,
+          "provincia": "Badajoz"
+        },
+        {
+          "latitude": 41.38424664,
+          "longitude": 2.17634927,
+          "n_cases": 1755643,
+          "n_death": 14567,
+          "n_hosp": 46680,
+          "n_uci": 3974,
+          "provincia": "Barcelona"
+        },
+        {
+          "latitude": 43.25721957,
+          "longitude": -2.92390606,
+          "n_cases": 335102,
+          "n_death": 3055,
+          "n_hosp": 14645,
+          "n_uci": 1292,
+          "provincia": "Bizkaia"
+        },
+        {
+          "latitude": 42.34113004,
+          "longitude": -3.70419805,
+          "n_cases": 106306,
+          "n_death": 1090,
+          "n_hosp": 5741,
+          "n_uci": 475,
+          "provincia": "Burgos"
+        },
+        {
+          "latitude": 43.46297885,
+          "longitude": -3.80474784,
+          "n_cases": 130263,
+          "n_death": 789,
+          "n_hosp": 6165,
+          "n_uci": 799,
+          "provincia": "Cantabria"
+        },
+        {
+          "latitude": 39.98640809,
+          "longitude": -0.03688142,
+          "n_cases": 160344,
+          "n_death": 1053,
+          "n_hosp": 5835,
+          "n_uci": 707,
+          "provincia": "Castell\u00f3"
+        },
+        {
+          "latitude": 35.88810209,
+          "longitude": -5.30675127,
+          "n_cases": 19744,
+          "n_death": 146,
+          "n_hosp": 562,
+          "n_uci": 72,
+          "provincia": "Ceuta"
+        },
+        {
+          "latitude": 38.98651781,
+          "longitude": -3.93131981,
+          "n_cases": 115734,
+          "n_death": 1900,
+          "n_hosp": 7877,
+          "n_uci": 481,
+          "provincia": "Ciudad Real"
+        },
+        {
+          "latitude": 40.07653762,
+          "longitude": -2.13152306,
+          "n_cases": 51871,
+          "n_death": 713,
+          "n_hosp": 4048,
+          "n_uci": 238,
+          "provincia": "Cuenca"
+        },
+        {
+          "latitude": 39.47316762,
+          "longitude": -6.37121092,
+          "n_cases": 87176,
+          "n_death": 1071,
+          "n_hosp": 3427,
+          "n_uci": 293,
+          "provincia": "C\u00e1ceres"
+        },
+        {
+          "latitude": 36.52171152,
+          "longitude": -6.28414575,
+          "n_cases": 190480,
+          "n_death": 1764,
+          "n_hosp": 7592,
+          "n_uci": 716,
+          "provincia": "C\u00e1diz"
+        },
+        {
+          "latitude": 37.87954225,
+          "longitude": -4.78032455,
+          "n_cases": 144037,
+          "n_death": 1320,
+          "n_hosp": 6927,
+          "n_uci": 775,
+          "provincia": "C\u00f3rdoba"
+        },
+        {
+          "latitude": 43.31717158,
+          "longitude": -1.98191785,
+          "n_cases": 242593,
+          "n_death": 2052,
+          "n_hosp": 6245,
+          "n_uci": 946,
+          "provincia": "Gipuzkoa"
+        },
+        {
+          "latitude": 41.98186075,
+          "longitude": 2.82411899,
+          "n_cases": 235386,
+          "n_death": 1857,
+          "n_hosp": 2750,
+          "n_uci": 281,
+          "provincia": "Girona"
+        },
+        {
+          "latitude": 37.17641932,
+          "longitude": -3.60001883,
+          "n_cases": 172890,
+          "n_death": 2077,
+          "n_hosp": 10964,
+          "n_uci": 1209,
+          "provincia": "Granada"
+        },
+        {
+          "latitude": 40.63435548,
+          "longitude": -3.16210273,
+          "n_cases": 68057,
+          "n_death": 752,
+          "n_hosp": 3589,
+          "n_uci": 304,
+          "provincia": "Guadalajara"
+        },
+        {
+          "latitude": 37.26004113,
+          "longitude": -6.95040588,
+          "n_cases": 83545,
+          "n_death": 485,
+          "n_hosp": 3884,
+          "n_uci": 268,
+          "provincia": "Huelva"
+        },
+        {
+          "latitude": 42.14062739,
+          "longitude": -0.40842276,
+          "n_cases": 69614,
+          "n_death": 742,
+          "n_hosp": 2757,
+          "n_uci": 304,
+          "provincia": "Huesca"
+        },
+        {
+          "latitude": 39.57114699,
+          "longitude": 2.65181698,
+          "n_cases": 275258,
+          "n_death": 1377,
+          "n_hosp": 8054,
+          "n_uci": 1242,
+          "provincia": "Illes Balears"
+        },
+        {
+          "latitude": 37.7651913,
+          "longitude": -3.7903594,
+          "n_cases": 113267,
+          "n_death": 1322,
+          "n_hosp": 6314,
+          "n_uci": 551,
+          "provincia": "Ja\u00e9n"
+        },
+        {
+          "latitude": 42.46644945,
+          "longitude": -2.44565538,
+          "n_cases": 93675,
+          "n_death": 912,
+          "n_hosp": 4613,
+          "n_uci": 495,
+          "provincia": "La Rioja"
+        },
+        {
+          "latitude": 28.099378545,
+          "longitude": -15.413368411,
+          "n_cases": 176917,
+          "n_death": 699,
+          "n_hosp": 4877,
+          "n_uci": 1095,
+          "provincia": "Las Palmas"
+        },
+        {
+          "latitude": 42.59912097,
+          "longitude": -5.56707631,
+          "n_cases": 108925,
+          "n_death": 1111,
+          "n_hosp": 6443,
+          "n_uci": 425,
+          "provincia": "Le\u00f3n"
+        },
+        {
+          "latitude": 41.61527355,
+          "longitude": 0.62061934,
+          "n_cases": 140305,
+          "n_death": 904,
+          "n_hosp": 1505,
+          "n_uci": 139,
+          "provincia": "Lleida"
+        },
+        {
+          "latitude": 43.0091282,
+          "longitude": -7.55817392,
+          "n_cases": 61830,
+          "n_death": 328,
+          "n_hosp": 2340,
+          "n_uci": 233,
+          "provincia": "Lugo"
+        },
+        {
+          "latitude": 40.40841191,
+          "longitude": -3.68760088,
+          "n_cases": 1641680,
+          "n_death": 19013,
+          "n_hosp": 127411,
+          "n_uci": 10988,
+          "provincia": "Madrid"
+        },
+        {
+          "latitude": 35.294731,
+          "longitude": -2.942281,
+          "n_cases": 20680,
+          "n_death": 154,
+          "n_hosp": 1079,
+          "n_uci": 173,
+          "provincia": "Melilla"
+        },
+        {
+          "latitude": 37.98436361,
+          "longitude": -1.1285408,
+          "n_cases": 395327,
+          "n_death": 2216,
+          "n_hosp": 14382,
+          "n_uci": 1734,
+          "provincia": "Murcia"
+        },
+        {
+          "latitude": 36.72034267,
+          "longitude": -4.41997511,
+          "n_cases": 272901,
+          "n_death": 2362,
+          "n_hosp": 13291,
+          "n_uci": 1120,
+          "provincia": "M\u00e1laga"
+        },
+        {
+          "latitude": 42.33654919,
+          "longitude": -7.86368375,
+          "n_cases": 69003,
+          "n_death": 545,
+          "n_hosp": 3592,
+          "n_uci": 302,
+          "provincia": "Ourense"
+        },
+        {
+          "latitude": 42.0078373,
+          "longitude": -4.53460106,
+          "n_cases": 50710,
+          "n_death": 665,
+          "n_hosp": 2918,
+          "n_uci": 309,
+          "provincia": "Palencia"
+        },
+        {
+          "latitude": 42.43381442,
+          "longitude": -8.64799018,
+          "n_cases": 210723,
+          "n_death": 947,
+          "n_hosp": 7159,
+          "n_uci": 791,
+          "provincia": "Pontevedra"
+        },
+        {
+          "latitude": 40.96736822,
+          "longitude": -5.66538084,
+          "n_cases": 88019,
+          "n_death": 1189,
+          "n_hosp": 4695,
+          "n_uci": 259,
+          "provincia": "Salamanca"
+        },
+        {
+          "latitude": 40.9498703,
+          "longitude": -4.12524116,
+          "n_cases": 42151,
+          "n_death": 663,
+          "n_hosp": 2162,
+          "n_uci": 211,
+          "provincia": "Segovia"
+        },
+        {
+          "latitude": 37.38620512,
+          "longitude": -5.99251368,
+          "n_cases": 286166,
+          "n_death": 2884,
+          "n_hosp": 15598,
+          "n_uci": 1404,
+          "provincia": "Sevilla"
+        },
+        {
+          "latitude": 41.76327912,
+          "longitude": -2.46624798,
+          "n_cases": 24781,
+          "n_death": 489,
+          "n_hosp": 1482,
+          "n_uci": 144,
+          "provincia": "Soria"
+        },
+        {
+          "latitude": 28.462854082,
+          "longitude": -16.247206286,
+          "n_cases": 166160,
+          "n_death": 937,
+          "n_hosp": 5701,
+          "n_uci": 906,
+          "provincia": "Sta. Cruz de Tenerife"
+        },
+        {
+          "latitude": 41.11910287,
+          "longitude": 1.2584219,
+          "n_cases": 230850,
+          "n_death": 1481,
+          "n_hosp": 3149,
+          "n_uci": 297,
+          "provincia": "Tarragona"
+        },
+        {
+          "latitude": 40.34412951,
+          "longitude": -1.10927177,
+          "n_cases": 40017,
+          "n_death": 544,
+          "n_hosp": 1958,
+          "n_uci": 168,
+          "provincia": "Teruel"
+        },
+        {
+          "latitude": 39.85715187,
+          "longitude": -4.02431421,
+          "n_cases": 170293,
+          "n_death": 2777,
+          "n_hosp": 13110,
+          "n_uci": 1086,
+          "provincia": "Toledo"
+        },
+        {
+          "latitude": 41.65232777,
+          "longitude": -4.72334924,
+          "n_cases": 159880,
+          "n_death": 1883,
+          "n_hosp": 8711,
+          "n_uci": 766,
+          "provincia": "Valladolid"
+        },
+        {
+          "latitude": 39.47534441,
+          "longitude": -0.37565717,
+          "n_cases": 728401,
+          "n_death": 4614,
+          "n_hosp": 28651,
+          "n_uci": 2316,
+          "provincia": "Val\u00e9ncia"
+        },
+        {
+          "latitude": 41.49913956,
+          "longitude": -5.75494831,
+          "n_cases": 40907,
+          "n_death": 660,
+          "n_hosp": 2545,
+          "n_uci": 185,
+          "provincia": "Zamora"
+        },
+        {
+          "latitude": 41.65645655,
+          "longitude": -0.87928652,
+          "n_cases": 296628,
+          "n_death": 3363,
+          "n_hosp": 14663,
+          "n_uci": 1288,
+          "provincia": "Zaragoza"
+        },
+        {
+          "latitude": 42.85058789,
+          "longitude": -2.67275685,
+          "n_cases": 94121,
+          "n_death": 904,
+          "n_hosp": 3610,
+          "n_uci": 325,
+          "provincia": "\u00c1lava"
+        },
+        {
+          "latitude": 40.65586958,
+          "longitude": -4.69771277,
+          "n_cases": 39813,
+          "n_death": 575,
+          "n_hosp": 2154,
+          "n_uci": 135,
+          "provincia": "\u00c1vila"
+        }
+      ],
+      "elevationRange": [
+        0,
+        1780000
+      ],
+      "elevationScale": 100000,
+      "extruded": true,
+      "getElevation": "@@=n_cases",
+      "getPosition": "@@=[longitude, latitude]",
+      "id": "1c764096-f16f-4344-9627-e66ab59fd281",
+      "pickable": true,
+      "radius": 18000
+    }
+  ],
+  "mapProvider": "carto",
+  "views": [
+    {
+      "@@type": "MapView",
+      "controller": true
+    }
+  ]
+};
+    const tooltip = true;
+    const customLibraries = null;
+    const configuration = null;
+
+    const deckInstance = createDeck({
+                  container,
+      jsonInput,
+      tooltip,
+      customLibraries,
+      configuration
+    });
+
+  </script>
+</html>
